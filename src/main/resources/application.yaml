@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: CoolLeaf
+  datasource:
+    url: jdbc:postgresql://192.168.2.18:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  data:
+    rest:
+      base-path: api/rest
+  jpa:
+    show-sql: true
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 2592000
+          cache-public: true
+
+server:
+  address: 0.0.0.0
+  port: 8080
