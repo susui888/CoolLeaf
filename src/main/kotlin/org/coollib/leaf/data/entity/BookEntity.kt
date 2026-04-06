@@ -42,6 +42,6 @@ open class BookEntity(
     // @OneToMany(mappedBy = "book")
     //open var loans: MutableSet<LoanEntity> = mutableSetOf(),
 
-    @ColumnDefault("description")
+    @ColumnDefault("'description'")
     open var description: String? = null
 )
