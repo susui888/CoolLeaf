@@ -11,7 +11,7 @@ interface BookRepository : JpaRepository<BookEntity, Int> {
 
     @Query("""
         SELECT b FROM BookEntity b 
-        WHERE (:category IS NULL OR b.categoryid = :category)
+        WHERE (:category IS NULL OR b.category = :category)
           AND (:author IS NULL OR b.author = :author)
           AND (:publisher IS NULL OR b.publisher = :publisher)
           AND (:year IS NULL OR b.year = :year)
@@ -25,4 +25,8 @@ interface BookRepository : JpaRepository<BookEntity, Int> {
         searchTerm: String
     ): List<BookEntity>
 
+    @Query("select p from BookEntity p order by p.year desc, p.id desc limit 15")
+    fun getNewestBooks(): List<BookEntity>
+
+    fun findByIsbn(isbn: String): BookEntity?
 }

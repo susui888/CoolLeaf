@@ -1,9 +1,14 @@
 package org.coollib.leaf.mock
 
 import org.coollib.leaf.data.entity.BookEntity
-import org.coollib.leaf.web.model.Book
+import org.coollib.leaf.data.entity.CategoryEntity
 
 object MockBooks {
+    val category = CategoryEntity(
+        id = 266,
+        name = "Fiction",
+        description = "No description",
+        )
 
     fun newList() = listOf(
 
@@ -13,6 +18,7 @@ object MockBooks {
             author = "Yuval Noah Harari",
             publisher = "Vintage",
             year = 2011,
+            category = category,
             description = "In \"Sapiens: A Brief History of Humankind,\" Yuval Noah Harari takes us on a breathtaking journey through the entire span of human history.",
         ),
 
@@ -22,6 +28,7 @@ object MockBooks {
             author = "Robert C. Martin",
             publisher = "Prentice Hall",
             year = 2008,
+            category = category,
             description = null,
         ),
 
@@ -31,6 +38,7 @@ object MockBooks {
             author = "Robert Jordan",
             publisher = "Tor Books",
             year = 1992,
+            category = category,
             description = null,
         ),
 
@@ -40,6 +48,7 @@ object MockBooks {
             author = "J.R.R. Tolkien",
             publisher = "Houghton Mifflin Harcourt",
             year = 1954,
+            category = category,
             description = null,
         ),
 
@@ -49,6 +58,7 @@ object MockBooks {
             author = "Jane Austen",
             publisher = "Penguin Classics",
             year = 1813,
+            category = category,
             description = null,
         ),
     )

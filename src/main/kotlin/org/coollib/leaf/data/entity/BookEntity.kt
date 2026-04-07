@@ -29,7 +29,7 @@ open class BookEntity(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryid")
-    open var categoryid: CategoryEntity? = null,
+    open var category: CategoryEntity? = null,
 
     @ColumnDefault("1")
     @Column(name = "totalcopies", nullable = false)

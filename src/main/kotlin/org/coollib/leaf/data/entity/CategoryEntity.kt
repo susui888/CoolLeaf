@@ -16,8 +16,8 @@ class CategoryEntity(
     open var name: String = "Fiction",
 
     @Column(name = "description", length = Integer.MAX_VALUE)
-    open var description: String? = null,
+    open var description: String = "Description",
 
-    @OneToMany(mappedBy = "categoryid")
+    @OneToMany(mappedBy = "category")
     open var books: MutableSet<BookEntity> = mutableSetOf()
 )

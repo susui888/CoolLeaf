@@ -19,17 +19,25 @@ class BookService(private val bookRepository: BookRepository) {
     }
 
     fun getBook(id: Int): Book =
-        bookRepository.findById(id)
-            .map { it.toBookDetail() }
+        bookRepository
+            .findById(id).map { it.toBookDetail() }
             .orElseThrow { NoSuchElementException("Book with id $id not found") }
 
     fun addBook(book: Book) =
-        bookRepository.save(book.toBookEntity()).toBook()
+        bookRepository
+            .save(book.toBookEntity())
+            .toBook()
 
     fun deleteBook(id: Int) =
         bookRepository.deleteById(id)
 
-    fun getAllBooks() =
-        bookRepository.findAll().map { it.toBook() }
+    fun getNewestBooks() =
+        bookRepository
+            .getNewestBooks()
+            .map { it.toBook() }
 
+    fun getBookByIsbn(isbn: String): Book =
+        bookRepository.findByIsbn(isbn)
+            ?.toBookDetail()
+            ?: throw NoSuchElementException("Book with isbn $isbn not found")
 }

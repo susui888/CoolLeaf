@@ -35,4 +35,11 @@ class BookApiController(private val bookService: BookService) {
     @DeleteMapping("/{id}")
     fun deleteBook(@PathVariable id: Int) =
         bookService.deleteBook(id)
+
+    @GetMapping("/newest")
+    fun getNewestBooks() = bookService.getNewestBooks()
+
+    @GetMapping("/isbn/{isbn}")
+    fun getBookByIsbn(@PathVariable isbn: String) =
+        bookService.getBookByIsbn(isbn)
 }
