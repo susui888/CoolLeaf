@@ -67,7 +67,6 @@ class SecurityConfig {
                     "/api/category/**",
                     "/api/books/isbn/**",
                     "/img/**",
-                    "/isbn/**"
                 ).permitAll()
                     .anyRequest().authenticated()
             }
