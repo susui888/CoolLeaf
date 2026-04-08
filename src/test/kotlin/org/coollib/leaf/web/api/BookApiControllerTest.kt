@@ -50,11 +50,11 @@ class BookApiControllerTest {
     fun `searchBooks should return all mapped books`() {
         whenever(
             bookService.findBooks(
-                anyOrNull(), // category
-                anyOrNull(), // author
-                anyOrNull(), // publisher
-                anyOrNull(), // year
-                any()        // searchTerm
+                anyOrNull(),
+                anyOrNull(),
+                anyOrNull(),
+                anyOrNull(),
+                any()
             )
         ).thenReturn(testBooks)
 
