@@ -1,18 +1,23 @@
 package org.coollib.leaf.web.api
 
+import org.coollib.leaf.config.JwtUtils
 import org.coollib.leaf.mock.MockCategory
 import org.coollib.leaf.service.CategoryService
+import org.coollib.leaf.service.UserService
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 @WebMvcTest(CategoryApiController::class)
+@AutoConfigureMockMvc(addFilters = false)
 class CategoryApiControllerTest {
 
     @Autowired
@@ -23,7 +28,14 @@ class CategoryApiControllerTest {
 
     private val testCategories = MockCategory.newList()
 
+    @MockitoBean
+    private lateinit var jwtUtils: JwtUtils
+
+    @MockitoBean
+    private lateinit var userService: UserService
+
     @Test
+    @WithMockUser
     fun `getCategory should return all categories`() {
         // Arrange
         `when`(categoryService.getAllCategory()).thenReturn(testCategories)
@@ -38,6 +50,7 @@ class CategoryApiControllerTest {
     }
 
     @Test
+    @WithMockUser
     fun `getCategoryById should return specific category`() {
         // Arrange
         val targetCategory = testCategories[0]
@@ -51,6 +64,7 @@ class CategoryApiControllerTest {
     }
 
     @Test
+    @WithMockUser
     fun `getCategoryById should return 404 when service throws exception`() {
         // Arrange
         `when`(categoryService.getCategoryById(999))
