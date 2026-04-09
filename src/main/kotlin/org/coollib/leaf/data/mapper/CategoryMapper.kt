@@ -8,3 +8,9 @@ fun CategoryEntity.toCategory() = Category(
     this.name,
     this.description
 )
+
+fun Category.toEntity() = CategoryEntity(
+    this.id,
+    this.name,
+    this.description
+)
