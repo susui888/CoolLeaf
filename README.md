@@ -1,5 +1,7 @@
 # CoolLib Server 📚
 
+[![Kotlin CI with Gradle](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml/badge.svg)](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml)
+
 The central brain of the CoolLib ecosystem. A high-performance, stateless RESTful API built with **Spring Boot** and **Kotlin**, providing a robust backbone for cross-platform library management.
 
 ## Ecosystem Links
