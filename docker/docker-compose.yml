@@ -1,0 +1,9 @@
+services:
+  coolleaf-app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: coolleaf-app
+    ports:
+      - "9080:8080"
+    restart: always

@@ -1,0 +1,19 @@
+# 忽略版本控制
+.git
+.gitignore
+
+# 忽略本地 IDE 配置
+.idea
+*.iml
+.vscode
+
+# 忽略构建输出和缓存 (非常重要！)
+build/
+!build/libs/
+.gradle/
+bin/
+out/
+
+# 忽略 Docker 自身的配置
+docker/
+.dockerignore

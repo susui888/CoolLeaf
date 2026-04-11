@@ -7,8 +7,8 @@ WORKDIR /app
 
 # Copy the packaged JAR file into the container
 # Please modify according to your actual JAR file name
-# COPY build/libs/CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
-COPY CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
+COPY build/libs/CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
+#COPY CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the default Spring Boot port 8080
 EXPOSE 8080
