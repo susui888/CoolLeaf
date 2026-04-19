@@ -1,0 +1,22 @@
+services:
+  coolleaf-app:
+    build:
+      context: .
+      dockerfile: Dockerfile # 去掉 docker/ 前缀
+    container_name: coolleaf-app
+    # ... 其他配置保持不变
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    volumes:
+      # 确保脚本里也传输了这个 nginx.conf
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - coolleaf-app
+
+  cf-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare-tunnel
+    restart: always
+    command: tunnel --no-autoupdate run --token eyJhIjoiOWU5MjE5MzgwODRjNzk4N2JkNGIwNDM1YTYyZjE2ODIiLCJ0IjoiODE1MmU1ZTgtYmQ2Yi00YjViLWE1OTctZTk0OGU3M2VmNmM4IiwicyI6IllqbGhOVFkwTnpZdE1Ua3hPUzAwTUdVekxUbGhNMlF0T0RCak5EWmpNMlF5TWpOayJ9

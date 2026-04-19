@@ -4,6 +4,22 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     container_name: coolleaf-app
-    ports:
-      - "9080:8080"
     restart: always
+    environment:
+      - SERVER_FORWARD_HEADERS_STRATEGY=framework
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    restart: always
+    volumes:
+      # 这里改为 ../certs，因为 certs 在 docker 文件夹的上一层
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - coolleaf-app
+
+  cf-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare-tunnel
+    restart: always
+    command: tunnel --no-autoupdate run --token eyJhIjoiOWU5MjE5MzgwODRjNzk4N2JkNGIwNDM1YTYyZjE2ODIiLCJ0IjoiNTI3NmE1MzItMDJkZC00MmIzLTgzODUtODkzNzNkY2Q3MDA4IiwicyI6IlkyRTJNRE16TkRrdE1URm1OUzAwTVdOa0xUa3paakl0WW1abU9XRTVabVF3WldabSJ9
