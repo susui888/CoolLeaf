@@ -1,4 +1,4 @@
-# CoolLib Server 📚
+# CoolLib Server
 
 [![Kotlin CI with Gradle](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml/badge.svg)](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml)
 
