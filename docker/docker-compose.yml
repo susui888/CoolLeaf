@@ -4,9 +4,15 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     container_name: coolleaf-app
+    env_file:
+      - .env
     restart: always
     environment:
       - SERVER_FORWARD_HEADERS_STRATEGY=framework
+      - DB_HOST=postgres-db
+      - DB_PORT=5432
+    ports:
+      - "8080:8080"
 
   nginx:
     image: nginx:alpine

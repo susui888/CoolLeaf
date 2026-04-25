@@ -64,6 +64,7 @@ class SecurityConfig {
                 auth.requestMatchers(
                     "/api/auth/**",
                     "/api/books/**",
+                    "/api/reviews/**",
                     "/api/category/**",
                     "/api/books/isbn/**",
                     "/img/**",

@@ -7,14 +7,21 @@ WORKDIR /app
 
 # Copy the packaged JAR file into the container
 # Please modify according to your actual JAR file name
+
 #local
-#COPY build/libs/CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
+COPY build/libs/CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
 
 #server
-COPY CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
+#COPY CoolLeaf-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the default Spring Boot port 8080
 EXPOSE 8080
 
 # Startup command
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+#1. Gradle clean
+#2. Gradle bootJar
+#3. docker build -f docker/Dockerfile -t coolleaf:latest .
+#4. cd docker
+#5. docker-compose up --build -d
