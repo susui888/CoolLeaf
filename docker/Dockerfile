@@ -20,8 +20,8 @@ EXPOSE 8080
 # Startup command
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
-#1. Gradle clean
-#2. Gradle bootJar
-#3. docker build -f docker/Dockerfile -t coolleaf:latest .
+#1. ./gradlew clean
+#2. ./gradlew bootJar
+#3. docker build -f docker/Dockerfile -t coolleaf .
 #4. cd docker
 #5. docker-compose up --build -d

@@ -9,6 +9,8 @@ interface ReviewRepository : JpaRepository<ReviewEntity, Long> {
 
     fun findByBookId(bookId: Int): List<ReviewEntity>
 
+    fun findByUserIdAndBookId(userId: Int, bookId: Int): ReviewEntity?
+
     // 2. 获取特定用户的评价，并按创建时间降序排列
     //fun findByUserIdOrderByCreatedAtDesc(userId: Long): List<Review>
 
