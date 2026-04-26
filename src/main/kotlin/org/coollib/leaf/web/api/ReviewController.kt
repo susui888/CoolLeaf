@@ -2,7 +2,9 @@ package org.coollib.leaf.web.api
 
 import org.coollib.leaf.service.ReviewService
 import org.coollib.leaf.web.model.Review
+import org.coollib.leaf.web.model.User
 import org.springframework.http.HttpStatus
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -21,10 +23,13 @@ class ReviewController(private val reviewService: ReviewService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createReview(@RequestBody request: CreateReviewRequest): Review {
+    fun createReview(
+        @RequestBody request: CreateReviewRequest,
+        @AuthenticationPrincipal user: User
+    ): Review {
         return reviewService.createReview(
             bookId = request.bookId,
-            userId = request.userId,
+            userId = user.id,
             rating = request.rating,
             content = request.content,
         )
@@ -34,7 +39,6 @@ class ReviewController(private val reviewService: ReviewService) {
 
 data class CreateReviewRequest(
     val bookId: Int,
-    val userId: Int,
     val rating: Int,
     val content: String
 )
