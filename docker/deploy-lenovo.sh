@@ -6,10 +6,8 @@ SERVER_USER="administrator"
 APP_NAME="coolleaf-app"
 REMOTE_DIR="C:/app/$APP_NAME"
 
-# 1. 修正本地路径
-# 既然你在 docker 目录下运行，JAR 包通常在上一级目录的 build 里
 JAR_PATH="../build/libs/CoolLeaf-0.0.1-SNAPSHOT.jar"
-DOCKER_DIR="." # 假设 Dockerfile 和 yml 就在脚本同级目录
+DOCKER_DIR="."
 
 echo "1: Ensure remote directory exists..."
 ssh $SERVER_USER@$SERVER_IP "powershell -Command \"if (!(Test-Path '$REMOTE_DIR')) { New-Item -ItemType Directory -Path '$REMOTE_DIR' }\""

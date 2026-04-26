@@ -2,7 +2,7 @@ services:
   coolleaf-app:
     build:
       context: .
-      dockerfile: Dockerfile # 去掉 docker/ 前缀
+      dockerfile: Dockerfile
     container_name: coolleaf-app
     # ... 其他配置保持不变
 
