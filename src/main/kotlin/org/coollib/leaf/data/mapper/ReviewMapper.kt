@@ -14,6 +14,7 @@ fun ReviewEntity.toDomain(): Review {
 
         bookId = this.book?.id ?: throw IllegalStateException("Book ID is required"),
         userId = this.user?.id ?: throw IllegalStateException("User ID is required"),
+        userName = this.user?.username ?: throw IllegalStateException("User name is required"),
         rating = this.rating ?: 0,
         content = this.content,
         createdAt = this.createdat ?: Instant.now(),

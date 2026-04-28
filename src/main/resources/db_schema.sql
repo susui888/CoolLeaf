@@ -95,18 +95,6 @@ create table public.loans
 alter table public.loans
     owner to postgres;
 
----------------------------------------------------------------------------------------
--- Add rate and comments feat
--- 增加平均分和评论总数
-ALTER TABLE public.books
-    ADD COLUMN avg_rating    NUMERIC(3, 2) DEFAULT 0.00 NOT NULL,
-    ADD COLUMN total_reviews INTEGER       DEFAULT 0    NOT NULL;
-
--- 也可以考虑为 avg_rating 增加检查约束 (0-5)
-ALTER TABLE public.books
-    ADD CONSTRAINT check_avg_rating CHECK (avg_rating >= 0 AND avg_rating <= 5);
-
-
 CREATE TABLE public.reviews
 (
     reviewid   SERIAL
