@@ -122,3 +122,17 @@ CREATE INDEX idx_review_book_date
 -- 如果需要查看“我的评价”列表
 CREATE INDEX idx_review_user
     ON public.reviews (userid);
+
+
+CREATE TABLE public.review_images
+(
+    imageid      SERIAL PRIMARY KEY,
+    reviewid     INTEGER      NOT NULL,
+    image_url    TEXT         NOT NULL,
+    width        INTEGER      NOT NULL,
+    height       INTEGER      NOT NULL,
+    sort_order   SMALLINT     DEFAULT 0,
+    createdat    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+CREATE INDEX idx_rev_img_reviewid ON public.review_images (reviewid);

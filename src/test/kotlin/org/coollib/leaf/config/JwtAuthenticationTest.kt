@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.get
  * Integration tests for JWT Authentication and Security Filter Chain.
  * Uses MockMvc to simulate HTTP requests without starting a full server.
  */
+@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
 class JwtAuthenticationTest {

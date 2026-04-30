@@ -2,9 +2,9 @@ spring:
   application:
     name: CoolLeaf
   datasource:
-    url: jdbc:postgresql://${DB_HOST:192.168.2.18}:${DB_PORT:5433}/${POSTGRES_DB:postgres}
-    username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:postgres}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
   data:
     rest:
@@ -27,3 +27,9 @@ server:
 jwt:
   secret: "at-least-32-character-long-secret-key-for-security"
   expiration: 2592000000 # 30 days in ms
+
+r2:
+  access-key: ${R2_ACCESS_KEY}
+  secret-key: ${R2_SECRET_KEY}
+  endpoint: ${R2_ENDPOINT}
+  bucket-name: coollib-review

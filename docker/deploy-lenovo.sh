@@ -16,8 +16,8 @@ cd ..
 echo "1: Ensure remote directory exists..."
 ssh $SERVER_USER@$SERVER_IP "powershell -Command \"if (!(Test-Path '$REMOTE_DIR')) { New-Item -ItemType Directory -Path '$REMOTE_DIR' }\""
 
-echo "2: Transfer files to the server..."6
-scp "$JAR_PATH" "docker/Dockerfile" "docker/docker-compose.lenovo.yml" "docker/nginx.conf" $SERVER_USER@$SERVER_IP:"$REMOTE_DIR/"
+echo "2: Transfer files to the server..."
+scp "$JAR_PATH" "docker/.env" "docker/Dockerfile" "docker/docker-compose.lenovo.yml" "docker/nginx.conf" $SERVER_USER@$SERVER_IP:"$REMOTE_DIR/"
 
 if [ $? -ne 0 ]; then
     echo "Transfer failed! Please check if the local files exist."
@@ -25,5 +25,4 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "3: Deploy remotely via Docker Compose..."
-# 关键点：cd 进去之后，必须指定 -f 参数，因为你的文件名不是默认的 docker-compose.yml
 ssh $SERVER_USER@$SERVER_IP "cd /d $REMOTE_DIR && docker compose -f docker-compose.lenovo.yml up -d --build"
