@@ -7,6 +7,7 @@ import software.amazon.awssdk.auth.credentials.AwsBasicCredentials
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.s3.S3Client
+import software.amazon.awssdk.services.s3.S3Configuration
 import software.amazon.awssdk.services.s3.presigner.S3Presigner
 import java.net.URI
 
@@ -41,10 +42,17 @@ class R2Config {
     fun s3Presigner(): S3Presigner {
         val credentials = AwsBasicCredentials.create(accessKey, secretKey)
 
+        // 关键：配置 S3 服务的行为
+        val s3Configuration = S3Configuration.builder()
+            .pathStyleAccessEnabled(true) // R2 必须开启路径风格访问
+            .checksumValidationEnabled(false) // 禁用校验和
+            .build()
+
         return S3Presigner.builder()
             .endpointOverride(URI.create(endpoint))
             .credentialsProvider(StaticCredentialsProvider.create(credentials))
             .region(Region.of("auto"))
+            .serviceConfiguration(s3Configuration) // 应用配置
             .build()
     }
 }

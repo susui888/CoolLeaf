@@ -136,3 +136,21 @@ CREATE TABLE public.review_images
 );
 
 CREATE INDEX idx_rev_img_reviewid ON public.review_images (reviewid);
+
+create table public.authors
+(
+    authorid    serial
+        primary key,
+    name        varchar(255)                  not null,
+    nationality varchar(100),
+    birthdate   date,
+    biography   text,
+    imageurl    text, -- 存储头像路径（如 Cloudflare R2 链接）
+    createdat   timestamp default CURRENT_TIMESTAMP not null
+);
+
+alter table public.authors
+    owner to postgres;
+
+create index idx_author_name
+    on public.authors (name);

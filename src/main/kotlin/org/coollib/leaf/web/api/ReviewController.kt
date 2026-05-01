@@ -37,6 +37,7 @@ class ReviewController(
             userId = user.id,
             rating = request.rating,
             content = request.content,
+            imageUrls = request.imageUrls
         )
     }
 
@@ -52,7 +53,8 @@ class ReviewController(
 data class CreateReviewRequest(
     val bookId: Int,
     val rating: Int,
-    val content: String
+    val content: String,
+    val imageUrls: List<String> = emptyList()
 )
 
 data class UploadUrlResponse(

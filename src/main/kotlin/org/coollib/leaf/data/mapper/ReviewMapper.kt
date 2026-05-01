@@ -18,6 +18,7 @@ fun ReviewEntity.toDomain(): Review {
         rating = this.rating ?: 0,
         content = this.content,
         createdAt = this.createdat ?: Instant.now(),
+        imageUrls = this.images?.sortedBy { it.sortOrder }?.map { it.imageUrl ?: "" } ?: emptyList(),
     )
 }
 
