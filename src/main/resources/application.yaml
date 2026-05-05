@@ -33,3 +33,9 @@ r2:
   secret-key: ${R2_SECRET_KEY}
   endpoint: ${R2_ENDPOINT}
   bucket-name: coollib-review
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health"

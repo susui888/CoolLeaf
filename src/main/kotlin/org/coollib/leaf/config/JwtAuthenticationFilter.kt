@@ -54,9 +54,7 @@ class JwtAuthenticationFilter(
         } catch (e: Exception) {
             // 2. If token is present but INVALID, stop the chain and return 401
             // This is why your test got a 200 previously - the error was swallowed
-            response.status = HttpServletResponse.SC_UNAUTHORIZED
-            response.writer.write("Invalid or corrupted token")
-            return // CRITICAL: Stop the filter chain here
+            SecurityContextHolder.clearContext()
         }
 
         // Continue the filter chain

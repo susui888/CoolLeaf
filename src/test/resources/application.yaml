@@ -10,3 +10,20 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
     show-sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics"
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      access: unrestricted
+  info:
+    java:
+      enabled: true
+info:
+  app:
+    name: CoolLeaf
+    version: 1.0.0
