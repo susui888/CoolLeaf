@@ -2,25 +2,62 @@
 
 [![Kotlin CI with Gradle](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml/badge.svg)](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml)
 
-The central brain of the CoolLib ecosystem. A high-performance, stateless RESTful API built with **Spring Boot** and **Kotlin**, providing a robust backbone for cross-platform library management.
+The backend foundation of the CoolLib ecosystem — a scalable, stateless RESTful API built with Spring Boot and Kotlin. Designed with Clean Architecture principles, the server powers cross-platform library management, distributed synchronization, authentication, and real-time operational monitoring.
 
 ## Ecosystem Links
 * [CoolLib Android](https://github.com/susui888/coollib-android) - Jetpack Compose Client
 * [CoolLib iOS](https://github.com/susui888/coollib-ios) - SwiftUI & SwiftData Client
 
 ## Tech Stack
-* **Language:** Kotlin
-* **Framework:** Spring Boot (Web, Security, Data JPA)
-* **Database:** PostgreSQL
-* **Auth:** JWT (JSON Web Tokens)
-* **Documentation:** Swagger / OpenAPI
+
+### Backend
+
+* Language: Kotlin
+* Framework: Spring Boot
+    * Spring Web
+    * Spring Security
+    * Spring Data JPA
+    * Spring Actuator
+* Architecture: Clean Architecture
+* Build Tool: Gradle
+
+### Database & Infrastructure
+
+* Database: PostgreSQL
+* Containerization: Docker & Docker Compose
+* Reverse Proxy: Nginx
+* Cloud Edge Layer: Cloudflare Workers
+* Edge Storage & Analytics: Cloudflare D1
+* Object Storage: Cloudflare R2 (S3-Compatible)
+
+### Authentication
+
+* JWT (JSON Web Tokens)
+* Stateless authentication & authorization flow
 
 ## Features
-* **Distributed Architecture:** Optimized for scalability and reliability.
-* **DTO Projection:** Efficient data transfer with minimal payload size.
-* **Stateless REST:** Full JWT-based authentication flow.
-* **ISBN Integration:** Core logic for book metadata retrieval.
 
-## Setup
-```bash
-./gradlew bootRun
+### Core System
+
+* Distributed Library Management: Centralized backend serving Android and iOS clients.
+* Clean Architecture: Layered separation of domain, application, and infrastructure logic.
+* Stateless REST API: JWT-secured endpoints with scalable request handling.
+* DTO Projection Optimization: Reduced payload size for efficient mobile communication.
+* ISBN Metadata Integration: Automatic retrieval of external book information.
+* Cross-Platform Synchronization: Shared backend logic across multiple client platforms.
+
+### Infrastructure & Monitoring
+
+* Real-Time System Monitoring: Live operational metrics exposed through Spring Boot Actuator.
+* Edge Metric Replication: Cloudflare Workers aggregate and replicate monitoring data into Cloudflare D1 for lightweight analytics dashboards.
+* Containerized Deployment: Fully Dockerized environment with isolated services.
+* Reverse Proxy Networking: Nginx-powered internal routing and traffic management.
+* CI/CD Integration: Automated GitHub Actions workflow for continuous integration.
+
+## Architecture Highlights
+
+* Stateless backend optimized for horizontal scalability
+* Production-oriented layered architecture
+* Lightweight edge analytics pipeline using Workers + D1
+* Mobile-first API design with optimized serialization
+* Docker-based local and production deployment support
