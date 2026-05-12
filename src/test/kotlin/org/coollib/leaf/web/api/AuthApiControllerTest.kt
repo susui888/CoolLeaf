@@ -77,6 +77,7 @@ class AuthApiControllerTest {
     fun `register should return success message`() {
         // Arrange
         val registerRequest = RegisterRequest("newuser", "pass123", "new@example.com")
+        val expectedResponse = MessageResponse("User registered successfully")
 
         whenever(userService.register(any())).thenReturn(Result.success(Unit))
 
@@ -86,10 +87,13 @@ class AuthApiControllerTest {
             content = objectMapper.writeValueAsString(registerRequest)
         }.andExpect {
             status { isOk() }
-            content { string("User registered successfully") }
+            // 方案 A: 使用 jsonPath 验证特定字段 (更灵活)
+            jsonPath("$.message") { value("User registered successfully") }
+
+            // 方案 B: 验证完整的 JSON 内容
+            // content { json(objectMapper.writeValueAsString(expectedResponse)) }
         }
 
-        // 验证参数
         verify(userService).register(check {
             assert(it.username == "newuser")
             assert(it.email == "new@example.com")
@@ -100,7 +104,8 @@ class AuthApiControllerTest {
     fun `register should return bad request when failure`() {
         // Arrange
         val registerRequest = RegisterRequest("user", "pass", "mail")
-        whenever(userService.register(any())).thenReturn(Result.failure(Exception("Error")))
+        val errorMessage = "Error"
+        whenever(userService.register(any())).thenReturn(Result.failure(Exception(errorMessage)))
 
         // Act & Assert
         mockMvc.post("/api/auth/register") {
@@ -108,7 +113,8 @@ class AuthApiControllerTest {
             content = objectMapper.writeValueAsString(registerRequest)
         }.andExpect {
             status { isBadRequest() }
-            content { string("Error") }
+            // 同样更新为验证 JSON 字段
+            jsonPath("$.message") { value(errorMessage) }
         }
     }
 }

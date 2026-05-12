@@ -54,11 +54,13 @@ class AuthApiController(
 
         return result.fold(
             onSuccess = {
-                ResponseEntity.ok("User registered successfully")
+                ResponseEntity.ok(MessageResponse("User registered successfully"))
             },
             onFailure = {
-                ResponseEntity.badRequest().body(it.message)
+                ResponseEntity.badRequest().body(MessageResponse(it.message ?: "Unknown error"))
             }
         )
     }
 }
+
+data class MessageResponse(val message: String)
