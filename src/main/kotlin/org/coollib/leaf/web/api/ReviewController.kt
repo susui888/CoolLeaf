@@ -6,6 +6,7 @@ import org.coollib.leaf.web.model.Review
 import org.coollib.leaf.web.model.User
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.annotation.AuthenticationPrincipal
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -47,6 +48,15 @@ class ReviewController(
         @RequestParam fileNames: List<String> // fileNames=1.webp,2.webp
     ): List<UploadUrlResponse> {
         return uploadService.getPresignedUploadUrls(user.id, fileNames)
+    }
+
+    @DeleteMapping("/{bookId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteReview(
+        @PathVariable bookId: Int,
+        @AuthenticationPrincipal user: User
+    ) {
+        reviewService.deleteReview(userId = user.id, bookId = bookId)
     }
 }
 

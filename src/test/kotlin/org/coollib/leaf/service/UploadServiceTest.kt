@@ -9,6 +9,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
+import software.amazon.awssdk.services.s3.S3Client
 import software.amazon.awssdk.services.s3.presigner.S3Presigner
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest
@@ -20,13 +21,16 @@ class UploadServiceTest {
     @Mock
     private lateinit var mockSigner: S3Presigner
 
+    @Mock
+    private lateinit var mockS3Client: S3Client
+
     private lateinit var uploadService: UploadService
 
     private val bucketName = "test-bucket"
 
     @BeforeEach
     fun setUp() {
-        uploadService = UploadService(mockSigner, bucketName)
+        uploadService = UploadService(mockSigner, mockS3Client, bucketName)
     }
 
     @Test

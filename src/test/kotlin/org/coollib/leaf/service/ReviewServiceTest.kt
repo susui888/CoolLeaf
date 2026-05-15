@@ -35,11 +35,19 @@ class ReviewServiceTest {
     @Mock
     private lateinit var reviewImageRepository: ReviewImageRepository
 
+    @Mock
+    private lateinit var uploadService: UploadService
+
     private lateinit var reviewService: ReviewService
 
     @BeforeEach
     fun setUp() {
-        reviewService = ReviewService(reviewRepository, userRepository, bookRepository, reviewImageRepository)
+        reviewService = ReviewService(
+            reviewRepository,
+            userRepository,
+            bookRepository,
+            reviewImageRepository,
+            uploadService)
     }
 
     @Test

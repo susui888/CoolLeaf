@@ -7,6 +7,7 @@ APP_NAME="coolleaf-app"
 REMOTE_DIR="C:/app/$APP_NAME"
 
 JAR_PATH="build/libs/CoolLeaf-0.0.1-SNAPSHOT.jar"
+# shellcheck disable=SC2034
 DOCKER_DIR="."
 
 echo "0: Cleaning and building the application..."

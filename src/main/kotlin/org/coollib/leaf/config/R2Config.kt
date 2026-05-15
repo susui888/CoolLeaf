@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider
 import software.amazon.awssdk.regions.Region
+import software.amazon.awssdk.services.s3.S3Client
 import software.amazon.awssdk.services.s3.S3Configuration
 import software.amazon.awssdk.services.s3.presigner.S3Presigner
 import java.net.URI
@@ -58,6 +59,26 @@ class R2Config {
             .region(Region.of("auto"))
             // Apply the R2-specific service configuration.
             .serviceConfiguration(s3Configuration)
+            .build()
+    }
+
+    /**
+     * Provides a standard S3Client for server-side operations.
+     * Used for administrative tasks such as deleting objects (Review cleanup).
+     */
+    @Bean
+    fun s3Client(): S3Client {
+        val credentials = AwsBasicCredentials.create(accessKey, secretKey)
+
+        return S3Client.builder()
+            .endpointOverride(URI.create(endpoint))
+            .credentialsProvider(StaticCredentialsProvider.create(credentials))
+            .region(Region.of("auto"))
+            .serviceConfiguration(
+                S3Configuration.builder()
+                    .pathStyleAccessEnabled(true)
+                    .build()
+            )
             .build()
     }
 }
