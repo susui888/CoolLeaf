@@ -2,6 +2,21 @@
 
 [![Kotlin CI with Gradle](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml/badge.svg)](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml)
 
+<p>
+  <!-- Core Engine -->
+  <img src="https://img.shields.io/badge/Java-21-ED8B00"/>&nbsp;
+  <img src="https://img.shields.io/badge/Kotlin-2.2.21-purple"/>&nbsp;
+  <img src="https://img.shields.io/badge/Spring_Boot-4.0.5-green"/>&nbsp;
+  <img src="https://img.shields.io/badge/Actuator-Metrics-85EA2D"/>
+</p>
+<p>
+  <!-- Security, Cloud & Storage -->
+  <img src="https://img.shields.io/badge/JWT-0.13.0-000000"/>&nbsp;
+  <img src="https://img.shields.io/badge/AWS-S3-FF9900"/>&nbsp;
+  <img src="https://img.shields.io/badge/PostgreSQL-Runtime-blue"/>&nbsp;
+  <img src="https://img.shields.io/badge/SQLite-Runtime-003B57"/>
+</p>
+
 The backend foundation of the CoolLib ecosystem — a scalable, stateless RESTful API built with Spring Boot and Kotlin. Designed with Clean Architecture principles, the server powers cross-platform library management, distributed synchronization, authentication, and real-time operational monitoring.
 
 ## Ecosystem Links
