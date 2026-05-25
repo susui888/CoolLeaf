@@ -3,76 +3,59 @@
 [![Kotlin CI with Gradle](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml/badge.svg)](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml)
 
 <p>
-  <!-- Core Engine -->
   <img src="https://img.shields.io/badge/Java-21-ED8B00"/>&nbsp;
-  <img src="https://img.shields.io/badge/Kotlin-2.2.21-purple"/>&nbsp;
-  <img src="https://img.shields.io/badge/Spring_Boot-4.0.5-green"/>&nbsp;
-  <img src="https://img.shields.io/badge/Actuator-Metrics-85EA2D"/>
+  <img src="https://img.shields.io/badge/Kotlin-2.x-7F52FF"/>&nbsp;
+  <img src="https://img.shields.io/badge/Spring_Boot-4.0-6DB33F"/>&nbsp;
+  <img src="https://img.shields.io/badge/JWT-Stateless-000000"/>&nbsp;
+  <img src="https://img.shields.io/badge/API-RESTful-009688"/>&nbsp;
+  <img src="https://img.shields.io/badge/Architecture-Clean_Architecture-4B5563?labelColor=111827"/>
 </p>
+
 <p>
-  <!-- Security, Cloud & Storage -->
-  <img src="https://img.shields.io/badge/JWT-0.13.0-000000"/>&nbsp;
-  <img src="https://img.shields.io/badge/AWS-S3-FF9900"/>&nbsp;
-  <img src="https://img.shields.io/badge/PostgreSQL-Runtime-blue"/>&nbsp;
-  <img src="https://img.shields.io/badge/SQLite-Runtime-003B57"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-16-336791"/>&nbsp;
+  <img src="https://img.shields.io/badge/Docker-Containerized-2496ED"/>&nbsp;
+  <img src="https://img.shields.io/badge/Cloudflare-Workers-F38020"/>&nbsp;
+  <img src="https://img.shields.io/badge/Actuator-Live_Metrics-85EA2D"/>
 </p>
 
-The backend foundation of the CoolLib ecosystem — a scalable, stateless RESTful API built with Spring Boot and Kotlin. Designed with Clean Architecture principles, the server powers cross-platform library management, distributed synchronization, authentication, and real-time operational monitoring.
+Distributed backend platform powering the CoolLib ecosystem — a stateless, edge-aware REST API built with Spring Boot and Kotlin. Designed for cross-platform mobile clients, globally accelerated delivery, JWT-secured authentication, and lightweight telemetry pipelines through Cloudflare infrastructure.
 
-## Ecosystem Links
-* [CoolLib Android](https://github.com/susui888/coollib-android) - Jetpack Compose Client
-* [CoolLib iOS](https://github.com/susui888/coollib-ios) - SwiftUI & SwiftData Client
+## Ecosystem
+
+* [CoolLib Android](https://github.com/susui888/coollib-android) — Jetpack Compose Client
+* [CoolLib iOS](https://github.com/susui888/coollib-ios) — SwiftUI & SwiftData Client
 
 ## Tech Stack
 
 ### Backend
 
-* Language: Kotlin
-* Framework: Spring Boot
-    * Spring Web
-    * Spring Security
-    * Spring Data JPA
-    * Spring Actuator
-* Architecture: Clean Architecture
-* Build Tool: Gradle
+* Kotlin + Spring Boot
+* Spring Security + JWT Authentication
+* Spring Data JPA + PostgreSQL
+* Spring Boot Actuator
+* Clean Architecture
+* Gradle Build System
 
-### Database & Infrastructure
+### Infrastructure
 
-* Database: PostgreSQL
-* Containerization: Docker & Docker Compose
-* Reverse Proxy: Nginx
-* Cloud Edge Layer: Cloudflare Workers
-* Edge Storage & Analytics: Cloudflare D1
-* Object Storage: Cloudflare R2 (S3-Compatible)
+* Docker & Docker Compose
+* Nginx Reverse Proxy
+* Cloudflare Workers
+* Cloudflare D1 Analytics
+* Cloudflare R2 Object Storage
 
-### Authentication
+## Platform Capabilities
 
-* JWT (JSON Web Tokens)
-* Stateless authentication & authorization flow
-
-## Features
-
-### Core System
-
-* Distributed Library Management: Centralized backend serving Android and iOS clients.
-* Clean Architecture: Layered separation of domain, application, and infrastructure logic.
-* Stateless REST API: JWT-secured endpoints with scalable request handling.
-* DTO Projection Optimization: Reduced payload size for efficient mobile communication.
-* ISBN Metadata Integration: Automatic retrieval of external book information.
-* Cross-Platform Synchronization: Shared backend logic across multiple client platforms.
-
-### Infrastructure & Monitoring
-
-* Real-Time System Monitoring: Live operational metrics exposed through Spring Boot Actuator.
-* Edge Metric Replication: Cloudflare Workers aggregate and replicate monitoring data into Cloudflare D1 for lightweight analytics dashboards.
-* Containerized Deployment: Fully Dockerized environment with isolated services.
-* Reverse Proxy Networking: Nginx-powered internal routing and traffic management.
-* CI/CD Integration: Automated GitHub Actions workflow for continuous integration.
+* Stateless JWT-secured REST API serving Android and iOS clients
+* Edge-accelerated API delivery and telemetry replication through Cloudflare infrastructure
+* Cleanly layered backend architecture optimized for scalable deployment
+* DTO-based mobile serialization for efficient synchronization and reduced payload size
+* ISBN metadata federation for external book information retrieval
+* Real-time operational monitoring through Spring Boot Actuator and Workers pipelines
 
 ## Architecture Highlights
 
 * Stateless backend optimized for horizontal scalability
-* Production-oriented layered architecture
-* Lightweight edge analytics pipeline using Workers + D1
-* Mobile-first API design with optimized serialization
-* Docker-based local and production deployment support
+* Edge-aware request delivery and lightweight distributed telemetry aggregation
+* Mobile-first API design focused on efficient serialization and synchronization
+* Fully containerized local and production deployment workflow
