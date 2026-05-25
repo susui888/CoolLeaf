@@ -5,14 +5,11 @@
   <img src="https://img.shields.io/badge/Kotlin-2.x-7F52FF"/>&nbsp;
   <img src="https://img.shields.io/badge/Spring_Boot-4.0-6DB33F"/>&nbsp;
   <img src="https://img.shields.io/badge/JWT-Stateless-000000"/>&nbsp;
-  <img src="https://img.shields.io/badge/API-RESTful-009688"/>&nbsp;
-  <img src="https://img.shields.io/badge/Architecture-Clean_Architecture-4B5563?labelColor=111827"/>
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/PostgreSQL-16-336791"/>&nbsp;
+  <img src="https://img.shields.io/badge/PostgreSQL-18.4-336791"/>&nbsp;
   <img src="https://img.shields.io/badge/Docker-Containerized-2496ED"/>&nbsp;
-  <img src="https://img.shields.io/badge/Cloudflare-Workers-F38020"/>&nbsp;
   <img src="https://img.shields.io/badge/Actuator-Live_Metrics-85EA2D"/>
 </p>
 
