@@ -1,6 +1,4 @@
-# CoolLib Server
-
-[![Kotlin CI with Gradle](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml/badge.svg)](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml)
+# CoolLib Server &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Live Infrastructure Monitor](https://img.shields.io/badge/Live_Infrastructure-Monitor-dc3545)](https://ryansu.uk/analytics/)&nbsp;&nbsp;&nbsp;&nbsp;[![Kotlin CI with Gradle](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml/badge.svg)](https://github.com/susui888/CoolLeaf/actions/workflows/ci.yml)
 
 <p>
   <img src="https://img.shields.io/badge/Java-21-ED8B00"/>&nbsp;
