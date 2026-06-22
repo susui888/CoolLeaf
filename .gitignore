@@ -40,3 +40,4 @@ out/
 .kotlin
 docker/.env
 gradle/wrapper/gradle-wrapper.jar
+*.jar
