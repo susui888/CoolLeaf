@@ -30,6 +30,7 @@ dependencies {
     implementation(platform("software.amazon.awssdk:bom:2.25.0"))
     implementation("software.amazon.awssdk:s3")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.xerial:sqlite-jdbc")
 

@@ -72,6 +72,7 @@ class SecurityConfig {
                     "/actuator/info",
                     "/actuator/metrics",
                     "/api/stats/**",
+                    "/api/telemetry/logs",
                 ).permitAll()
                     .anyRequest().authenticated()
             }

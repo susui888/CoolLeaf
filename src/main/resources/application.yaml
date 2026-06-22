@@ -12,7 +12,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-    show-sql: true
+    show-sql: false
   web:
     resources:
       cache:
@@ -39,3 +39,17 @@ management:
     web:
       exposure:
         include: "health,info,metrics"
+
+logging:
+  level:
+    root: INFO
+    # 针对你自己的包开启 INFO 级（或者 DEBUG 级）
+    org.coollib.leaf: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: INFO
+    # 必须对该过滤器单独开启 DEBUG，否则它不会有任何输出
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+
+  pattern:
+    # 自定义控制台输出格式，注意中间的 [%X{trace_id}]，这就是 SLF4J 自动帮你提取出的变量
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%5p) %clr([%thread]){magenta} %clr(%logger{36}){cyan} %clr([%X{trace_id}]){yellow} - %msg%n"
