@@ -15,6 +15,9 @@
 
 Distributed backend platform powering the CoolLib ecosystem — a stateless, edge-aware REST API built with Spring Boot and Kotlin. Designed for cross-platform mobile clients, globally accelerated delivery, JWT-secured authentication, and lightweight telemetry pipelines through Cloudflare infrastructure.
 
+## LOGS
+<p><a href="https://ryansu.uk/analytics/logs/"><img src="https://telemetry-svg.susui888.workers.dev/api/telemetry-logs.svg" alt="System Logs" width="600" /></a></p>
+
 ## Ecosystem
 
 * [CoolLib Android](https://github.com/susui888/coollib-android) — Jetpack Compose Client
