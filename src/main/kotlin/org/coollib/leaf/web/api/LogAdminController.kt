@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/telemetry")
+@CrossOrigin(
+    origins = ["*"],
+    allowedHeaders = ["*"],
+    methods = [RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS]
+)
 class LogAdminController(private val telemetryService: TelemetryService) {
 
     /**

@@ -1,4 +1,5 @@
 package org.coollib.leaf.logging
+
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
@@ -14,7 +15,9 @@ class WebLoggingAspect {
 
     private val log = LoggerFactory.getLogger(WebLoggingAspect::class.java)
 
-    @Pointcut("within(org.coollib.leaf.web.api..*)")
+    // 💡 使用 && !within 排除掉日志大盘控制器
+    // 如果你要排除整个 telemetry 子包，可以用 && !within(org.coollib.leaf.web.api.telemetry..*)
+    @Pointcut("within(org.coollib.leaf.web.api..*) && !within(org.coollib.leaf.web.api.LogAdminController)")
     fun logPointcut() {}
 
     @Around("logPointcut()")
