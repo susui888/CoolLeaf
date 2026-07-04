@@ -97,6 +97,8 @@ class PostgresLogAppender : AppenderBase<ILoggingEvent>() {
         dataSource?.connection?.use { conn ->
             conn.prepareStatement(sql).use { ps ->
                 for (event in events) {
+                    if (event.formattedMessage.contains("telemetry.app_logs")) { continue; }
+
                     ps.setString(1, "local")
 
                     // Automatically categorize telemetry source based on the logger package signature

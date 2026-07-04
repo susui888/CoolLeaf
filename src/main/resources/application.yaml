@@ -45,7 +45,7 @@ logging:
     root: INFO
     # 针对你自己的包开启 INFO 级（或者 DEBUG 级）
     org.coollib.leaf: INFO
-    org.hibernate.SQL: INFO
+    org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: INFO
     # 必须对该过滤器单独开启 DEBUG，否则它不会有任何输出
     org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
