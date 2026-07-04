@@ -95,57 +95,61 @@ create table public.loans
 alter table public.loans
     owner to postgres;
 
-CREATE TABLE public.reviews
+create table public.reviews
 (
-    reviewid   SERIAL
-        PRIMARY KEY,
-    bookid     INTEGER                   NOT NULL
-        REFERENCES public.books (bookid) ON DELETE CASCADE,
-    userid     INTEGER                   NOT NULL
-        REFERENCES public.users (userid) ON DELETE CASCADE,
-    rating     SMALLINT                  NOT NULL
-        CONSTRAINT check_rating CHECK (rating >= 1 AND rating <= 5),
-    content    TEXT,
-    createdat  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-
-    -- 核心约束：每个用户对每本书只能有一条评价
-    CONSTRAINT unique_user_book_review UNIQUE (userid, bookid)
+    reviewid  serial
+        primary key,
+    bookid    integer                             not null
+        references public.books
+            on delete cascade,
+    userid    integer                             not null
+        references public.users
+            on delete cascade,
+    rating    smallint                            not null
+        constraint check_rating
+            check ((rating >= 1) AND (rating <= 5)),
+    content   text,
+    createdat timestamp default CURRENT_TIMESTAMP not null,
+    constraint unique_user_book_review
+        unique (userid, bookid)
 );
 
-ALTER TABLE public.reviews
-    OWNER TO postgres;
+alter table public.reviews
+    owner to postgres;
 
--- 按照书籍 ID 快速查找评论，并按时间倒序排列
-CREATE INDEX idx_review_book_date
-    ON public.reviews (bookid, createdat DESC);
+create index idx_review_book_date
+    on public.reviews (bookid asc, createdat desc);
 
--- 如果需要查看“我的评价”列表
-CREATE INDEX idx_review_user
-    ON public.reviews (userid);
+create index idx_review_user
+    on public.reviews (userid);
 
-
-CREATE TABLE public.review_images
+create table public.review_images
 (
-    imageid      SERIAL PRIMARY KEY,
-    reviewid     INTEGER      NOT NULL,
-    image_url    TEXT         NOT NULL,
-    width        INTEGER      NOT NULL,
-    height       INTEGER      NOT NULL,
-    sort_order   SMALLINT     DEFAULT 0,
-    createdat    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP NOT NULL
+    imageid    serial
+        primary key,
+    reviewid   integer                             not null,
+    image_url  text                                not null,
+    width      integer                             not null,
+    height     integer                             not null,
+    sort_order smallint  default 0,
+    createdat  timestamp default CURRENT_TIMESTAMP not null
 );
 
-CREATE INDEX idx_rev_img_reviewid ON public.review_images (reviewid);
+alter table public.review_images
+    owner to postgres;
+
+create index idx_rev_img_reviewid
+    on public.review_images (reviewid);
 
 create table public.authors
 (
     authorid    serial
         primary key,
-    name        varchar(255)                  not null,
+    name        varchar(255)                        not null,
     nationality varchar(100),
     birthdate   date,
     biography   text,
-    imageurl    text, -- 存储头像路径（如 Cloudflare R2 链接）
+    imageurl    text,
     createdat   timestamp default CURRENT_TIMESTAMP not null
 );
 
@@ -154,3 +158,39 @@ alter table public.authors
 
 create index idx_author_name
     on public.authors (name);
+
+
+
+
+
+
+create schema telemetry;
+
+create table telemetry.app_logs
+(
+    id          bigserial
+        primary key,
+    timestamp   timestamp with time zone default CURRENT_TIMESTAMP,
+    environment varchar(20)              default 'local'::character varying,
+    platform    varchar(20) not null,
+    level       varchar(10) not null,
+    trace_id    varchar(50),
+    tag         text,
+    message     text        not null,
+    stack_trace text
+);
+
+alter table telemetry.app_logs
+    owner to postgres;
+
+create index idx_logs_trace_id
+    on telemetry.app_logs (trace_id)
+    where (trace_id IS NOT NULL);
+
+create index idx_logs_timestamp
+    on telemetry.app_logs (timestamp desc);
+
+create index idx_logs_level_platform
+    on telemetry.app_logs (level, platform);
+
+
