@@ -16,7 +16,7 @@ class BookService(private val bookRepository: BookRepository) {
 
     fun findBooks(category: Int?, author: String?, publisher: String?, year: Int?, searchTerm: String): List<Book> {
         val categoryEntity = category?.let { CategoryEntity(it) }
-        return bookRepository.searchBooks(categoryEntity, author, publisher, year, searchTerm).map { it.toBook() }
+        return bookRepository.searchBooks(categoryEntity, author?.trim(), publisher?.trim(), year, searchTerm.trim()).map { it.toBook() }
     }
 
     fun getBook(id: Int): Book {
