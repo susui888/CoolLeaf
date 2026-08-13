@@ -1,0 +1,29 @@
+### Send POST request with json body to login
+POST https://coollib.ryansu.uk/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "susui",
+  "password": "123456"
+}
+
+### Send GET to view loan
+GET https://coollib.ryansu.uk/api/loan
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzdXN1aSIsImlhdCI6MTc4NjYwMTEyNiwiZXhwIjoxNzg5MTkzMTI2fQ.LfdNM_RtQCTrrw0LuaBaL8v2pBELw55lg40mG2K7XZM46ceUlF2AetZ9AXpv-Zo1
+
+### GET empty review
+GET https://coollib.ryansu.uk/api/reviews/996
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzdXN1aSIsImlhdCI6MTc4NjYwMTEyNiwiZXhwIjoxNzg5MTkzMTI2fQ.LfdNM_RtQCTrrw0LuaBaL8v2pBELw55lg40mG2K7XZM46ceUlF2AetZ9AXpv-Zo1
+
+### Create new review
+POST https://coollib.ryansu.uk/api/reviews
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzdXN1aSIsImlhdCI6MTc4NjYwMTEyNiwiZXhwIjoxNzg5MTkzMTI2fQ.LfdNM_RtQCTrrw0LuaBaL8v2pBELw55lg40mG2K7XZM46ceUlF2AetZ9AXpv-Zo1
+Content-Type: application/json
+
+{
+  "bookId": 996,
+  "userId": "9",
+  "rating": 5,
+  "content": "OK",
+  "imageUrls": []
+}
