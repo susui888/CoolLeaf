@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-SERVER_IP="192.168.2.18"
+SERVER_IP="192.168.0.101"
 SERVER_USER="administrator"
 APP_NAME="coolleaf-app"
 REMOTE_DIR="C:/app/$APP_NAME"
