@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:21-jre-ubi10-minimal
 # Change to this if you need a China mirror for faster pulls
 # FROM m.daocloud.io/docker.io/library/eclipse-temurin:21-jre
 
