@@ -41,3 +41,6 @@ out/
 docker/.env
 gradle/wrapper/gradle-wrapper.jar
 *.jar
+.DS_Store
+src/.DS_Store
+src/main/.DS_Store

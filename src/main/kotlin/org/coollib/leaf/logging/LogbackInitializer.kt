@@ -24,7 +24,7 @@ class LogbackInitializer : ApplicationListener<ApplicationEnvironmentPreparedEve
             name = "POSTGRES_DYNAMIC"
 
             // 3. 从 Spring 环境中读取变量
-            url = "jdbc:postgresql://${environment.getProperty("DB_HOST", "192.168.2.18")}:${environment.getProperty("DB_PORT", "5433")}/${environment.getProperty("POSTGRES_DB", "postgres")}"
+            url = "jdbc:postgresql://${environment.getProperty("DB_HOST", "localhost")}:${environment.getProperty("DB_PORT", "5433")}/${environment.getProperty("POSTGRES_DB", "postgres")}"
             username = environment.getProperty("POSTGRES_USER", "postgres")
             password = environment.getProperty("POSTGRES_PASSWORD", "postgres")
         }

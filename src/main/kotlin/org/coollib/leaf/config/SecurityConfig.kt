@@ -69,8 +69,6 @@ class SecurityConfig {
                     "/api/books/isbn/**",
                     "/img/**",
                     "/actuator/**",
-                    "/actuator/info",
-                    "/actuator/metrics",
                     "/api/stats/**",
                     "/api/telemetry/logs",
                 ).permitAll()
