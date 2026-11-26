@@ -26,4 +26,4 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Deploy remotely via Docker Compose..."
-ssh $SERVER_USER@$SERVER_IP "cd /d $REMOTE_DIR && docker compose -f docker-compose.omen.yml up -d --build"
+ssh "$SERVER_USER@$SERVER_IP" "Set-Location -Path '$REMOTE_DIR'; docker compose -f docker-compose.omen.yml up -d --build"
